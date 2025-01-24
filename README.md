@@ -34,9 +34,9 @@ If you just want to try things out, be sure to `sst remove --stage {your stage n
 - This app uses [Zero](https://zero.rocicorp.dev/) to manage data access. Zero talks to an upstream Postgres database, which is managed by Drizzle.
 - Upon running `pnpm dev`, you'll see a tab in the SST multiplexer that says `Zero`. Click on it to open a shell into the Zero server container.
 - You will likely see that the server ran into a connection error. Idk why, but restarting the process by highlighting the `Zero` tab and pressing `Enter` will fix it.
-- Next, you might see an error that the `bet_log` or `bet_log_cvr` db hasn't been created. In this case, you need to seed the DB by running `pnpm --filter scripts db:seed`
+- Next, you will see an error that one of the three DBs hasn't been created. You need to seed the DB by running `pnpm --filter scripts db:seed`
 - Create the initial Drizzle schema migration by running `pnpm --filter core generate`
-- Now that you've created the DB, you need to run Drizzle migrations. Run `pnpm --filter core migrate` to apply the migrations.
+- Now that you've created the DB and the migration, you need to run the migration. Run `pnpm --filter core migrate` to apply the migrations.
 - You might have to restart `pnpm dev` after this to get the Zero server to connect to the DB.
 - If you see an error from Zero about EADDRINUSE, you might need to manually kill the running process. Zero is in alpha and has some rough edges...
   - On mac:
@@ -44,6 +44,7 @@ If you just want to try things out, be sure to `sst remove --stage {your stage n
     - See a list of PIDs, copy the first one
     - `kill -9 <PID>`
   - Then try restarting the Zero server.
+
 ### Production deployment
 - This repo isn't quite set up for prod deploys yet. There are a few `throw new Error()` in the codebase that should catch all the places that need updates to support a prod deployment. Most are just populating the correct env vars for prod.
 
@@ -51,6 +52,7 @@ If you just want to try things out, be sure to `sst remove --stage {your stage n
 - This template uses [One](https://onestack.dev/) just because thats what my app was using when I made this template.
 - The One template includes Tauri to create a native desktop app. I haven't messed with that since I wasn't building a desktop app, so I don't know if it all works. You can remove all the Tauri stuff if you don't want it.
 - The Native app runs in dev mode by default when you run `pnpm dev`. Click on the "Native" tab in the SST multiplexer to see details about the dev server.
+- This One template requires Node 22.
 
 ## Coding style
 - Ensure `pnpm typecheck` and `pnpm check` pass. You can run `pnpm fix` to format the code.
