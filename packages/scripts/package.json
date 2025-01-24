@@ -1,0 +1,21 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "db:seed": "sst shell tsx src/postgres/seed.ts",
+    "db:clean": "sst shell tsx src/postgres/clean.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "@types/pg": "8.11.10",
+    "pg": "^8.13.1",
+    "tsx": "^4.19.2"
+  }
+}

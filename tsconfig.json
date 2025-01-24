@@ -1,0 +1,6 @@
+{
+  "extends": "./.sst/platform/tsconfig.json",
+  "exclude": [
+    "packages/",
+  ]
+}

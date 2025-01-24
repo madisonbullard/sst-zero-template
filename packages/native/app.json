@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "Lock Watch",
+    "slug": "lock-watch",
+    "version": "0.1",
+    "sdkVersion": "51.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "scheme": "lock-watch",
+    "ios": {
+      "bundleIdentifier": "com.lock-watch.mbdev"
+    }
+  }
+}
