@@ -1,4 +1,12 @@
 # SST/Zero Template
+Use SST to deploy a database using Zero and Drizzle, with better-auth integration
+
+## Cost:
+This repo spins up AWS infra that costs money to operate.
+  - the VPC Bastion (see [SST's cost breakdown](https://sst.dev/docs/component/aws/vpc#bastion))
+  - the hosted Postgres DB (see [SST's cost breakdown](https://sst.dev/docs/component/aws/postgres#cost))
+
+If you just want to try things out, be sure to `sst remove --stage {your stage name}` after so that you remove the costly infra.
 
 ## .env
 - You'll need to create a `.env` file in the root of the project.
@@ -16,8 +24,10 @@
     - For GitHub, visit [Github's Developer Settings](https://github.com/settings/developers) and create a new OAuth App.
 
 ## Initial infra setup + Local development
-- `pnpm sst dev` launches the SST multiplexer, which spawns multiple shells into the various dev resources.
+- `pnpm sst dev --stage dev` launches the SST multiplexer, which spawns multiple shells into the various dev resources, and creates your infrastructure on the `dev` stage.
   - If its the first time running the dev command, it will take a long time (like 10 minutes) to complete the initial infra deployment.
+  - By default, SST creates a new personal stage instead of a stage named `dev`. Adding `--stage dev` to the command will create a stage named `dev` instead. You should verify that after running the command, `.sst/stage` says "dev". Once that is set, you don't have to pass the `--stage` flag to SST commands.
+    - You want to initially create a dev stage instead of a personal stage because the personal stages [share resources](https://sst.dev/docs/share-across-stages) created by the dev stage to save money.
   - You'll need to set up the SST Tunnel to access resources in the VPC (the database, etc). Follow the instructions in the SST multiplexer on the "Tunnel" tab to set it up.
 
 ## Setting up the DB (Zero + Drizzle)
@@ -34,6 +44,8 @@
     - See a list of PIDs, copy the first one
     - `kill -9 <PID>`
   - Then try restarting the Zero server.
+### Production deployment
+- This repo isn't quite set up for prod deploys yet. There are a few `throw new Error()` in the codebase that should catch all the places that need updates to support a prod deployment. Most are just populating the correct env vars for prod.
 
 ## Native App
 - This template uses [One](https://onestack.dev/) just because thats what my app was using when I made this template.
