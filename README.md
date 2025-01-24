@@ -1,3 +1,5 @@
+# SST/Zero Template
+
 ## .env
 - You'll need to create a `.env` file in the root of the project.
 - See `.env.example` for the variables you need to set.
