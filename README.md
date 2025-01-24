@@ -49,7 +49,7 @@ If you just want to try things out, be sure to `sst remove --stage {your stage n
 - This repo isn't quite set up for prod deploys yet. There are a few `throw new Error()` in the codebase that should catch all the places that need updates to support a prod deployment. Most are just populating the correct env vars for prod.
 
 ## Native App
-- This template uses [One](https://onestack.dev/) just because thats what my app was using when I made this template.
+- This template uses [One](https://onestack.dev/) just because thats what my app was using when I made this template. Feel free to rip it out (remove `infra/native.ts` and `packages/native`) and [deploy your own FE](https://sst.dev/docs/component/aws/nextjs) instead.
 - The One template includes Tauri to create a native desktop app. I haven't messed with that since I wasn't building a desktop app, so I don't know if it all works. You can remove all the Tauri stuff if you don't want it.
 - The Native app runs in dev mode by default when you run `pnpm dev`. Click on the "Native" tab in the SST multiplexer to see details about the dev server.
 - This One template requires Node 22.
