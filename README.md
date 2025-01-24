@@ -18,7 +18,7 @@ If you just want to try things out, be sure to `sst remove --stage {your stage n
   - Be sure to update your `.env` file with your AWS profile and SSO session.
 - `pnpm install`
 - `pnpm sso` if you haven't logged in to AWS already
-- Set the SST secrets by running `pnpm sst secret set {SecretName} {value}`
+- Set the SST secrets by running `pnpm sst secret set {SecretName} {value} --stage dev`
   - Check `infra/secret.ts` for the list of secrets you need to set.
   - You'll need to populate the required client IDs and secrets for each social provider in the `infra/secret.ts` file.
     - For GitHub, visit [Github's Developer Settings](https://github.com/settings/developers) and create a new OAuth App.
