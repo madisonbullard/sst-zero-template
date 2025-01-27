@@ -13,8 +13,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^22.10.7",
-    "@types/pg": "8.11.10",
+    "@types/node": "^22.10.10",
+    "@types/pg": "8.11.11",
     "pg": "^8.13.1",
     "tsx": "^4.19.2"
   }

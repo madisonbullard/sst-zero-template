@@ -45,6 +45,12 @@ If you just want to try things out, be sure to `sst remove --stage {your stage n
     - `kill -9 <PID>`
   - Then try restarting the Zero server.
 
+## Zero Permissions
+Zero permissions are not set, but the scaffold to define permissions is in `packages/core/src/zero/index.ts`. From the Zero docs:
+> If a policy is not defined for a table or operation, Zero currently allows the operation.
+> This is not a very safe default, but it is productive. We will likely flip this default in the future.
+More from the docs [here](https://zero.rocicorp.dev/docs/permissions).
+
 ### Production deployment
 - This repo isn't quite set up for prod deploys yet. There are a few `throw new Error()` in the codebase that should catch all the places that need updates to support a prod deployment. Most are just populating the correct env vars for prod.
 

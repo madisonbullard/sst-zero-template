@@ -20,12 +20,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@rocicorp/zero": "^0.11.2025011402",
+    "@rocicorp/zero": "^0.12.2025012501",
     "better-auth": "1.1.14",
-    "drizzle-orm": "^0.38.4",
+    "drizzle-orm": "^0.39.0",
     "nanoid": "^5.0.9"
   },
   "devDependencies": {
-    "drizzle-kit": "^0.30.2"
+    "drizzle-kit": "^0.30.3"
   }
 }

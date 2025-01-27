@@ -1,94 +1,81 @@
-import type { Row } from "@rocicorp/zero";
+import { boolean, number, relationships, string, table } from "@rocicorp/zero";
 
-export const userSchema = {
-	tableName: "user",
-	primaryKey: ["id"],
-	columns: {
-		id: "string",
-		name: "string",
-		email: "string",
-		emailVerified: "boolean",
-		image: { type: "string", optional: true },
-		createdAt: "number",
-		updatedAt: "number",
-	},
-} as const;
+export const userSchema = table("user")
+	.columns({
+		id: string(),
+		name: string(),
+		email: string(),
+		emailVerified: boolean(),
+		image: string().optional(),
+		createdAt: number(),
+		updatedAt: number(),
+	})
+	.primaryKey("id");
 
-export const sessionSchema = {
-	tableName: "session",
-	primaryKey: ["id"],
-	columns: {
-		id: "string",
-		expiresAt: "number",
-		token: "string",
-		ipAddress: { type: "string", optional: true },
-		userAgent: { type: "string", optional: true },
-		userId: "string",
-		createdAt: "number",
-		updatedAt: "number",
-	},
-	relationships: {
-		user: {
-			sourceField: "userId",
-			destField: "id",
-			destSchema: () => userSchema,
-		},
-	},
-} as const;
+export const sessionSchema = table("session")
+	.columns({
+		id: string(),
+		expiresAt: number(),
+		token: string(),
+		ipAddress: string().optional(),
+		userAgent: string().optional(),
+		userId: string(),
+		createdAt: number(),
+		updatedAt: number(),
+	})
+	.primaryKey("id");
 
-export const accountSchema = {
-	tableName: "account",
-	primaryKey: ["id"],
-	columns: {
-		id: "string",
-		accountId: "string",
-		providerId: "string",
-		userId: "string",
-		accessToken: { type: "string", optional: true },
-		refreshToken: { type: "string", optional: true },
-		idToken: { type: "string", optional: true },
-		accessTokenExpiresAt: { type: "number", optional: true },
-		refreshTokenExpiresAt: { type: "number", optional: true },
-		scope: { type: "string", optional: true },
-		password: { type: "string", optional: true },
-		createdAt: "number",
-		updatedAt: "number",
-	},
-	relationships: {
-		user: {
-			sourceField: "userId",
-			destField: "id",
-			destSchema: () => userSchema,
-		},
-	},
-} as const;
+export const sessionRelationships = relationships(sessionSchema, ({ one }) => ({
+	user: one({
+		sourceField: ["userId"],
+		destField: ["id"],
+		destSchema: userSchema,
+	}),
+}));
 
-export const verificationSchema = {
-	tableName: "verification",
-	primaryKey: ["id"],
-	columns: {
-		id: "string",
-		identifier: "string",
-		value: "string",
-		expiresAt: "number",
-		createdAt: { type: "number", optional: true },
-		updatedAt: { type: "number", optional: true },
-	},
-} as const;
+export const accountSchema = table("account")
+	.columns({
+		id: string(),
+		accountId: string(),
+		providerId: string(),
+		userId: string(),
+		accessToken: string().optional(),
+		refreshToken: string().optional(),
+		idToken: string().optional(),
+		accessTokenExpiresAt: number().optional(),
+		refreshTokenExpiresAt: number().optional(),
+		scope: string().optional(),
+		password: string().optional(),
+		createdAt: number(),
+		updatedAt: number(),
+	})
+	.primaryKey("id");
 
-export const jwksSchema = {
-	tableName: "jwks",
-	primaryKey: ["id"],
-	columns: {
-		id: "string",
-		publicKey: "string",
-		privateKey: "string",
-		createdAt: "number",
-	},
-} as const;
+export const accountRelationships = relationships(accountSchema, ({ one }) => ({
+	user: one({
+		sourceField: ["userId"],
+		destField: ["id"],
+		destSchema: userSchema,
+	}),
+}));
 
-export type User = Row<typeof userSchema>;
-export type Session = Row<typeof sessionSchema>;
-export type Account = Row<typeof accountSchema>;
-export type Verification = Row<typeof verificationSchema>;
-export type Jwks = Row<typeof jwksSchema>;
+export const verificationSchema = table("verification")
+	.columns({
+		id: string(),
+		identifier: string(),
+		value: string(),
+		expiresAt: number(),
+		createdAt: number(),
+		updatedAt: number(),
+	})
+	.primaryKey("id");
+
+export const jwksSchema = table("jwks")
+	.columns({
+		id: string(),
+		publicKey: string(),
+		privateKey: string(),
+		createdAt: number(),
+	})
+	.primaryKey("id");
+2;
