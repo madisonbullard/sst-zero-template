@@ -11,13 +11,7 @@
 	},
 	"files": {
 		"include": ["**/*.ts"],
-		"ignore": [
-			"node_modules",
-			".sst",
-			"sst-env.d.ts",
-			".svelte-kit",
-			"packages/native/routes.d.ts"
-		]
+		"ignore": ["node_modules", ".sst", "sst-env.d.ts", ".svelte-kit"]
 	},
 	"overrides": [
 		{

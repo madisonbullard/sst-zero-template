@@ -34,9 +34,9 @@ If you just want to try things out, be sure to `sst remove --stage {your stage n
 - This app uses [Zero](https://zero.rocicorp.dev/) to manage data access. Zero talks to an upstream Postgres database, which is managed by Drizzle.
 - Upon running `pnpm dev`, you'll see a tab in the SST multiplexer that says `Zero`. Click on it to open a shell into the Zero server container.
 - You will likely see that the server ran into a connection error. Idk why, but restarting the process by highlighting the `Zero` tab and pressing `Enter` will fix it.
-- Next, you will see an error that one of the three DBs hasn't been created. You need to seed the DB by running `pnpm --filter scripts db:seed`
-- Create the initial Drizzle schema migration by running `pnpm --filter core generate`
-- Now that you've created the DB and the migration, you need to run the migration. Run `pnpm --filter core migrate` to apply the migrations.
+- Next, you will see an error that one of the three DBs hasn't been created. You need to seed the DB by running `pnpm --filter=@sst-zero-template/scripts db:seed`
+- Create the initial Drizzle schema migration by running `pnpm --filter=@sst-zero-template/core generate`
+- Now that you've created the DB and the migration, you need to run the migration. Run `pnpm --filter=@sst-zero-template/core migrate` to apply the migrations.
 - You might have to restart `pnpm dev` after this to get the Zero server to connect to the DB.
 - If you see an error from Zero about EADDRINUSE, you might need to manually kill the running process. Zero is in alpha and has some rough edges...
   - On mac:
@@ -54,11 +54,8 @@ More from the docs [here](https://zero.rocicorp.dev/docs/permissions).
 ### Production deployment
 - This repo isn't quite set up for prod deploys yet. There are a few `throw new Error()` in the codebase that should catch all the places that need updates to support a prod deployment. Most are just populating the correct env vars for prod.
 
-## Native App
-- This template uses [One](https://onestack.dev/) just because thats what my app was using when I made this template. Feel free to rip it out (remove `infra/native.ts` and `packages/native`) and [deploy your own FE](https://sst.dev/docs/component/aws/nextjs) instead.
-- The One template includes Tauri to create a native desktop app. I haven't messed with that since I wasn't building a desktop app, so I don't know if it all works. You can remove all the Tauri stuff if you don't want it.
-- The Native app runs in dev mode by default when you run `pnpm dev`. Click on the "Native" tab in the SST multiplexer to see details about the dev server.
-- This One template requires Node 22.
+## SvelteKit app
+- This app uses [SvelteKit](https://kit.svelte.dev/). The deployment is defined in `infra/webapp.ts`.
 
 ## Coding style
 - Ensure `pnpm typecheck` and `pnpm check` pass. You can run `pnpm fix` to format the code.

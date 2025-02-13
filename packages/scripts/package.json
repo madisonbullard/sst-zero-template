@@ -1,5 +1,5 @@
 {
-  "name": "scripts",
+  "name": "@sst-zero-template/scripts",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^22.10.10",
+    "@types/node": "^22.13.2",
     "@types/pg": "8.11.11",
     "pg": "^8.13.1",
     "tsx": "^4.19.2"
