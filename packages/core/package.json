@@ -9,18 +9,19 @@
     "./*": "./src/*.ts"
   },
   "scripts": {
-    "db": "pnpm sst shell drizzle-kit",
-    "generate": "pnpm db generate",
-    "migrate": "pnpm db migrate",
-    "db:studio": "pnpm sst shell drizzle-kit studio",
+    "db": "bun sst shell drizzle-kit",
+    "generate": "bun db generate",
+    "migrate": "bun db migrate",
+    "db:studio": "bun sst shell drizzle-kit studio",
     "generate:auth": "sst shell -- npx @better-auth/cli generate --config ./src/auth/index.ts --output .src/auth/better-auth.sql.ts",
-    "typecheck": "tsc --noEmit"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+		"typecheck": "tsc --noEmit",
+		"zero:dev": "bun zero-cache-dev -p src/zero/index.ts"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
   "dependencies": {
-    "@rocicorp/zero": "^0.14.2025021202",
+    "@rocicorp/zero": "*",
     "better-auth": "1.1.17",
     "drizzle-orm": "^0.39.0",
     "nanoid": "^5.0.9"

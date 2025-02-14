@@ -1,7 +1,7 @@
+import { db } from "@sst-zero-template/core/drizzle/index";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { bearer, jwt } from "better-auth/plugins";
-import { db } from "core/drizzle/index";
 import { Resource } from "sst";
 import * as schema from "./better-auth.sql";
 

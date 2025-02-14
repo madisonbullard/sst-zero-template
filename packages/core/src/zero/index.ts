@@ -1,4 +1,9 @@
-import { type Row, createSchema, definePermissions } from "@rocicorp/zero";
+import {
+	ANYONE_CAN,
+	type Row,
+	createSchema,
+	definePermissions,
+} from "@rocicorp/zero";
 import {
 	accountRelationships,
 	accountSchema,
@@ -8,6 +13,7 @@ import {
 	userSchema,
 	verificationSchema,
 } from "../auth/better-auth.zero";
+import { todoSchema } from "../todo/todo.zero";
 
 export const schema = createSchema(1, {
 	tables: [
@@ -16,6 +22,7 @@ export const schema = createSchema(1, {
 		accountSchema,
 		verificationSchema,
 		jwksSchema,
+		todoSchema,
 	],
 	relationships: [sessionRelationships, accountRelationships],
 });
@@ -27,7 +34,15 @@ export type Jwks = Row<typeof schema.tables.jwks>;
 export type Session = Row<typeof schema.tables.session>;
 export type User = Row<typeof schema.tables.user>;
 export type Verification = Row<typeof schema.tables.verification>;
+export type Todo = Row<typeof schema.tables.todo>;
 
-export const permissions = definePermissions(schema, () => {
-	return {};
+export const permissions = definePermissions<Session, Schema>(schema, () => {
+	return {
+		todo: {
+			row: {
+				delete: ANYONE_CAN,
+				insert: ANYONE_CAN,
+			},
+		},
+	};
 });
