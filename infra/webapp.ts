@@ -6,7 +6,6 @@ if ($app.stage === "production") {
 	);
 }
 export const webapp = new sst.aws.SvelteKit("Webapp", {
-	link: [secret.GithubClientId, secret.GithubClientSecret],
 	path: "packages/webapp",
 	environment: {
 		VITE_ZERO_SERVER_URL: "http://localhost:4848",
