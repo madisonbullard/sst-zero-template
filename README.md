@@ -1,5 +1,6 @@
 # SST/Zero Template
-Use SST to deploy a database using Zero and Drizzle
+Use SST to deploy a database using Zero and Drizzle.
+> Highly recommend getting familiar with [SST](https://sst.dev) and [Zero](https://zero.rocicorp.dev/) docs before using this template. Both are fantastic tools, but come with some complexity. Understanding the way each library behaves will help you get the most out of this template.
 
 ## Cost:
 This repo spins up AWS infra that costs money to operate.

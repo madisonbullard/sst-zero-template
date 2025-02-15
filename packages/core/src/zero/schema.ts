@@ -5,10 +5,10 @@ import {
 	definePermissions,
 } from "@rocicorp/zero";
 
-import { todoSchema } from "../todo/todo.zero";
+import { todo } from "../todo/todo.zero";
 
 export const schema = createSchema(1, {
-	tables: [todoSchema],
+	tables: [todo],
 });
 
 export type Schema = typeof schema;
