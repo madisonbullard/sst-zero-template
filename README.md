@@ -49,7 +49,7 @@ If you just want to try things out, be sure to `sst remove --stage {your stage n
 Zero permissions are all set to `ANYONE_CAN` in `packages/core/src/zero/schema.ts`. This isn't what you would want in production, so you'll need to set the permissions to something more appropriate for your use case.
 More from the docs [here](https://zero.rocicorp.dev/docs/permissions).
 
-### Production deployment
+## Production deployment
 - This repo isn't quite set up for prod deploys yet. There are a few `throw new Error()` in the codebase that should catch all the places that need updates to support a prod deployment. Most are just populating the correct env vars for prod.
 
 ## SvelteKit app
