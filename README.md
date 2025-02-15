@@ -21,8 +21,6 @@ If you just want to try things out, be sure to `sst remove --stage {your stage n
 - `bun sso` if you haven't logged in to AWS already
 - Set the SST secrets by running `bun sst secret set {SecretName} {value} --stage dev`
   - Check `infra/secret.ts` for the list of secrets you need to set.
-  - You'll need to populate the required client IDs and secrets for each social provider in the `infra/secret.ts` file.
-    - For GitHub, visit [Github's Developer Settings](https://github.com/settings/developers) and create a new OAuth App.
 
 ## Initial infra setup + Local development
 - `bun sst dev --stage dev` launches the SST multiplexer, which spawns multiple shells into the various dev resources, and creates your infrastructure on the `dev` stage.
