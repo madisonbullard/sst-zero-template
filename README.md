@@ -36,8 +36,8 @@ If you just want to try things out, be sure to `sst remove --stage {your stage n
 - Now that you've created the DB and the migration, you need to run the migration. Run `bun --filter=@sst-zero-template/core migrate` to apply the migrations.
 - This app uses [Zero](https://zero.rocicorp.dev/) to manage data access. Zero talks to an upstream Postgres database, which is managed by Drizzle.
 - Upon running `bun dev`, you'll see a tab in the SST multiplexer that says `Zero`. Click on it to open a shell into the Zero server container.
-- You might see that the server ran into a connection error `ECONNRESET`. Idk why, but restarting the process by highlighting the `Zero` tab and pressing `Enter` will fix it.
-- If you see an error from Zero about `EADDRINUSE`, you might need to manually kill the running process. Not sure if thats a Zero bug or an SST bug...
+- You might see that the server ran into a connection error `ECONNRESET`, or it might hang while setting up permissions. Restarting the process by highlighting the `Zero` tab, pressing `x` to exit, and then pressing `Enter` to restart will fix it.
+- If you see an error from Zero about `EADDRINUSE`, you might need to manually kill the running process. I think thats an SST bug....
   - On mac:
     - `sudo lsof -i :4849` (or whatever port Zero is running on)
     - See a list of PIDs, copy the first one
