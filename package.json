@@ -7,7 +7,7 @@
 		"typecheck": "bun --filter=* typecheck",
 		"check": "bun biome check",
 		"fix": "bun check --write ./",
-		"dev": "sst dev --stage dev",
+		"dev": "sst dev",
 		"sso": "source .env && aws sso login --sso-session=${AWS_SSO_SESSION}",
 		"deploy": "bun sst deploy"
 	},
