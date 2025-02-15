@@ -16,18 +16,10 @@ export const zeroDb = new sst.aws.Postgres("ZeroDatabase", {
 					applyMethod: "pending-reboot",
 				},
 				{
-					name: "max_connections",
-					value: "1000",
+					name: "max_slot_wal_keep_size",
+					value: "10240",
 					applyMethod: "pending-reboot",
 				},
-				...($app.stage === "production"
-					? []
-					: [
-							{
-								name: "max_slot_wal_keep_size",
-								value: "1024",
-							},
-						]),
 			],
 		},
 	},
@@ -38,12 +30,13 @@ const connection = $interpolate`postgres://${zeroDb.username}:${zeroDb.password}
 export const dbProperties = new sst.Linkable("DbProperties", {
 	properties: {
 		connectionString: connection,
+		ZERO_UPSTREAM_DB_NAME: zeroDb.database,
 	},
 });
 
 export const drizzleStudio = new sst.x.DevCommand("DrizzleStudio", {
 	dev: {
-		command: "pnpm db:studio",
+		command: "bun db:studio",
 		directory: "packages/core",
 	},
 });

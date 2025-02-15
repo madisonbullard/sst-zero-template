@@ -4,39 +4,38 @@
 	"description": "",
 	"type": "module",
 	"scripts": {
-		"typecheck": "pnpm -r typecheck",
-		"check": "pnpm biome check",
-		"fix": "pnpm check --write ./",
+		"typecheck": "bun -r typecheck",
+		"check": "bun biome check",
+		"fix": "bun check --write ./",
 		"dev": "sst dev --stage dev",
 		"sso": "source .env && aws sso login --sso-session=${AWS_SSO_SESSION}",
-		"deploy": "pnpm sst deploy"
+		"deploy": "bun sst deploy"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"sst": "3.9.0"
+		"@pulumi/command": "1.0.2",
+		"sst": "3.9.2"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
 		"@tsconfig/node22": "22.0.0",
 		"@types/aws-lambda": "8.10.147",
-		"@types/node": "22.13.2",
+		"@types/node": "22.13.4",
 		"typescript": "5.7.3"
 	},
 	"engines": {
 		"node": ">=22.0.0"
 	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"esbuild"
-		]
-	},
 	"overrides": {
-    "@rocicorp/zero": "0.15.2025021200"
-  },
-  "trustedDependencies": [
-    "@rocicorp/zero-sqlite3",
-    "protobufjs"
-  ]
+		"@rocicorp/zero": "0.15.2025021402"
+	},
+	"workspaces": ["packages/*"],
+	"trustedDependencies": [
+		"@biomejs/biome",
+		"@rocicorp/zero-sqlite3",
+		"esbuild",
+		"protobufjs"
+	]
 }

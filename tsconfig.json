@@ -1,6 +1,8 @@
 {
-  "extends": "./.sst/platform/tsconfig.json",
-  "exclude": [
-    "packages/",
-  ]
+  "extends": "@tsconfig/node22/tsconfig.json",
+  "exclude": ["packages"],
+  "compilerOptions": {
+    "module": "ES2022",
+    "moduleResolution": "Bundler"
+  }
 }

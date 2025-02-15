@@ -8,6 +8,13 @@
       "when": 1739508502455,
       "tag": "0000_bumpy_mephisto",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1739636501337,
+      "tag": "0001_parallel_fixer",
+      "breakpoints": true
     }
   ]
 }

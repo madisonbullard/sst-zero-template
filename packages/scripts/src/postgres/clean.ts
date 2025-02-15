@@ -7,11 +7,7 @@ import { Resource } from "sst";
 
 const connectionString = `${Resource.DbProperties.connectionString}/postgres`;
 
-const dbsToRemove = [
-	Resource.DbProperties.ZERO_UPSTREAM_DB_NAME,
-	Resource.DbProperties.ZERO_CVR_DB_NAME,
-	Resource.DbProperties.ZERO_CHANGE_DB_NAME,
-];
+const dbsToRemove = [Resource.DbProperties.ZERO_UPSTREAM_DB_NAME];
 
 console.info(`Connecting to: ${connectionString}/postgres`);
 

@@ -5,52 +5,10 @@
 
 declare module "sst" {
   export interface Resource {
-    "Api": {
-      "name": string
-      "type": "sst.aws.Function"
-      "url": string
-    }
-    "ApiRouter": {
-      "type": "sst.aws.Router"
-      "url": string
-    }
-    "Bus": {
-      "arn": string
-      "name": string
-      "type": "sst.aws.Bus"
-    }
-    "CdnBucket": {
-      "name": string
-      "type": "sst.aws.Bucket"
-    }
-    "CdnQueue": {
-      "type": "sst.aws.Queue"
-      "url": string
-    }
-    "CdnRouter": {
-      "type": "sst.aws.Router"
-      "url": string
-    }
     "DbProperties": {
-      "ZERO_CHANGE_DB_NAME": string
-      "ZERO_CVR_DB_NAME": string
       "ZERO_UPSTREAM_DB_NAME": string
       "connectionString": string
       "type": "sst.sst.Linkable"
-    }
-    "DevEmail": {
-      "configSet": string
-      "sender": string
-      "type": "sst.aws.Email"
-    }
-    "DevEmailAddress": {
-      "type": "sst.sst.Secret"
-      "value": string
-    }
-    "DomainEmail": {
-      "configSet": string
-      "sender": string
-      "type": "sst.aws.Email"
     }
     "GithubClientId": {
       "type": "sst.sst.Secret"
@@ -60,27 +18,26 @@ declare module "sst" {
       "type": "sst.sst.Secret"
       "value": string
     }
-    "ImageAnalysisApiKey": {
-      "type": "sst.sst.Secret"
-      "value": string
-    }
-    "OpenAiApiKey": {
-      "type": "sst.sst.Secret"
-      "value": string
-    }
-    "Urls": {
-      "domain": string
-      "rootDomain": string
-      "type": "sst.sst.Linkable"
+    "Storage": {
+      "name": string
+      "type": "sst.aws.Bucket"
     }
     "Vpc": {
       "bastion": string
       "type": "sst.aws.Vpc"
     }
+    "Webapp": {
+      "type": "sst.aws.SvelteKit"
+      "url": string
+    }
     "Zero": {
       "service": string
       "type": "sst.aws.Service"
       "url": string
+    }
+    "ZeroAuthSecret": {
+      "type": "sst.sst.Secret"
+      "value": string
     }
     "ZeroDatabase": {
       "database": string

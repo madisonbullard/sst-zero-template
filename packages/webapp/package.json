@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "sst dev vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
@@ -13,14 +13,17 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^4.0.0",
-		"@sveltejs/kit": "^2.16.0",
-		"@sveltejs/vite-plugin-svelte": "^5.0.0",
-		"svelte": "^5.0.0",
-		"svelte-check": "^4.0.0",
-		"typescript": "^5.0.0",
-		"vite": "^6.0.0"
+		"@sveltejs/kit": "^2.17.2",
+		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"svelte": "^5.20.1",
+		"svelte-check": "^4.1.4",
+		"typescript": "^5.7.3",
+		"vite": "^6.1.0"
 	},
 	"dependencies": {
-		"svelte-kit-sst": "2.43.5"
+		"@rocicorp/zero": "*",
+		"@sst-zero-template/core": "workspace:*",
+		"svelte-kit-sst": "2.43.5",
+		"zero-svelte": "0.2.0"
 	}
 }

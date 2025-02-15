@@ -13,9 +13,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^22.13.2",
+    "@types/node": "^22.13.4",
     "@types/pg": "8.11.11",
-    "pg": "^8.13.1",
+    "pg": "^8.13.3",
     "tsx": "^4.19.2"
   }
 }

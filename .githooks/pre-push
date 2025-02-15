@@ -2,6 +2,6 @@
 
 set -e
 
-pnpm install --frozen-lockfile
-pnpm typecheck
-pnpm check
+bun install --frozen-lockfile
+bun typecheck
+bun check
