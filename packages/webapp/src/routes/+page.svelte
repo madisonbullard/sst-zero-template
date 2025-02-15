@@ -44,7 +44,7 @@
     <button type="submit">Add</button>
   </form>
   <ul>
-    {#each todos.current as todo}
+    {#each todos.current as todo (todo.id)}
       <li>
         <input
           type="checkbox"
