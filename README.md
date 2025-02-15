@@ -46,9 +46,7 @@ If you just want to try things out, be sure to `sst remove --stage {your stage n
 - If you need to delete the whole DB, you can run `bun --filter=@sst-zero-template/scripts db:clean`, and then follow these steps again.
 
 ## Zero Permissions
-Zero permissions are not set, but the scaffold to define permissions is in `packages/core/src/zero/schema.ts`. From the Zero docs:
-> If a policy is not defined for a table or operation, Zero currently allows the operation.
-> This is not a very safe default, but it is productive. We will likely flip this default in the future.
+Zero permissions are all set to `ANYONE_CAN` in `packages/core/src/zero/schema.ts`. This isn't what you would want in production, so you'll need to set the permissions to something more appropriate for your use case.
 More from the docs [here](https://zero.rocicorp.dev/docs/permissions).
 
 ### Production deployment
