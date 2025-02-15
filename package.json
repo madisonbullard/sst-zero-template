@@ -4,7 +4,7 @@
 	"description": "",
 	"type": "module",
 	"scripts": {
-		"typecheck": "bun -r typecheck",
+		"typecheck": "bun --filter=* typecheck",
 		"check": "bun biome check",
 		"fix": "bun check --write ./",
 		"dev": "sst dev --stage dev",
