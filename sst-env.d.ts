@@ -10,14 +10,6 @@ declare module "sst" {
       "connectionString": string
       "type": "sst.sst.Linkable"
     }
-    "GithubClientId": {
-      "type": "sst.sst.Secret"
-      "value": string
-    }
-    "GithubClientSecret": {
-      "type": "sst.sst.Secret"
-      "value": string
-    }
     "Storage": {
       "name": string
       "type": "sst.aws.Bucket"

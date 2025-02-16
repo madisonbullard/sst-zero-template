@@ -1,5 +1,3 @@
-import { secret } from "./secret";
-
 if ($app.stage === "production") {
 	throw new Error(
 		"VITE_ZERO_SERVER_URL must be configured for use in production in infra/webapp.ts",

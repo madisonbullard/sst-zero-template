@@ -1,6 +1,5 @@
 import { execSync } from "node:child_process";
 import { join } from "node:path";
-import { local } from "@pulumi/command";
 import { cluster } from "./cluster";
 import { dbProperties } from "./database";
 import { secret } from "./secret";
@@ -148,16 +147,12 @@ export const zero = new sst.aws.Service("Zero", {
 	wait: true,
 });
 
-new local.Command(
-	"zero-deploy-permissions",
-	{
-		// Pulumi operates with cwd at the package root.
-		dir: join(process.cwd(), "packages/core/"),
-		environment: zeroEnv,
-		create: "npx zero-deploy-permissions --schema-path src/zero/schema.ts",
-		// Run the Command on every deploy ...
-		triggers: [Date.now()],
+new sst.x.DevCommand("ZeroPermissions", {
+	dev: {
+		directory: "packages/core",
+		command: "npx zero-deploy-permissions -p src/zero/schema.ts",
 	},
-	// after the view-syncer is deployed.
-	{ dependsOn: zero },
-);
+	environment: {
+		ZERO_UPSTREAM_DB: $interpolate`${conn}/${dbProperties.properties.ZERO_UPSTREAM_DB_NAME}`,
+	},
+});
