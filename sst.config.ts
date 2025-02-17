@@ -11,6 +11,7 @@ export default $config({
 					region: "us-east-1",
 					profile: process.env.AWS_PROFILE,
 				},
+				command: "1.0.2",
 			},
 		};
 	},

@@ -17,8 +17,8 @@ const tag = $dev
 const image = `registry.hub.docker.com/rocicorp/zero:${tag}`;
 
 const zeroEnv = {
-	NO_COLOR: "1",
-	FORCE: "1",
+	// NO_COLOR: "1",
+	// FORCE: "1",
 	ZERO_LOG_LEVEL: "info",
 	ZERO_UPSTREAM_DB: conn,
 	ZERO_CVR_DB: conn,
@@ -30,7 +30,7 @@ const zeroEnv = {
 	...($dev
 		? {}
 		: {
-				ZERO_LITESTREAM_BACKUP_URL: $interpolate`s3://${storage.name}/zero/1`,
+				ZERO_LITESTREAM_BACKUP_URL: $interpolate`s3://${storage.name}/zero-backups/${tag}/1`,
 			}),
 };
 
@@ -77,6 +77,9 @@ const replication = !$dev
 				loadBalancer: {
 					idleTimeout: 60 * 60,
 				},
+				target: {
+					deregistrationDelay: 1, // Drain as soon as a new instance is healthy.
+				},
 			},
 		})
 	: undefined;
@@ -99,9 +102,7 @@ export const zero = new sst.aws.Service("Zero", {
 				}
 			: {
 					// biome-ignore lint/style/noNonNullAssertion: `repliction` will always be defined when !$dev
-					ZERO_CHANGE_STREAMER_URI: replication!.url.apply((val) =>
-						val.replace("http://", "ws://"),
-					),
+					ZERO_CHANGE_STREAMER_URI: replication!.url,
 					ZERO_UPSTREAM_MAX_CONNS: "15",
 					ZERO_CVR_MAX_CONNS: "160",
 				}),
@@ -144,15 +145,20 @@ export const zero = new sst.aws.Service("Zero", {
 	// Set this to `true` to make SST wait for the view-syncer to be deployed
 	// before proceeding (to permissions deployment, etc.). This makes the deployment
 	// take a lot longer and is only necessary if there is an AST format change.
-	wait: true,
+	wait: !$dev,
 });
 
-new sst.x.DevCommand("ZeroPermissions", {
-	dev: {
-		directory: "packages/core",
-		command: "npx zero-deploy-permissions -p src/zero/schema.ts",
+new command.local.Command(
+	"zero-deploy-permissions",
+	{
+		dir: join(process.cwd(), "packages/core"),
+		create: "npx zero-deploy-permissions -p src/zero/schema.ts",
+		environment: {
+			ZERO_UPSTREAM_DB: $interpolate`${conn}/${dbProperties.properties.ZERO_UPSTREAM_DB_NAME}`,
+		},
+		triggers: [Date.now()],
 	},
-	environment: {
-		ZERO_UPSTREAM_DB: $interpolate`${conn}/${dbProperties.properties.ZERO_UPSTREAM_DB_NAME}`,
+	{
+		dependsOn: zero,
 	},
-});
+);
