@@ -14,7 +14,7 @@
     "migrate": "bun db migrate",
     "db:studio": "bun sst shell drizzle-kit studio",
 		"typecheck": "tsc --noEmit",
-		"zero:dev": "bun zero-cache"
+		"zero:dev": "bun zero-cache --log-level=debug"
 	},
 	"keywords": [],
 	"author": "",
