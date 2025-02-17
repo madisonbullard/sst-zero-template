@@ -5,5 +5,6 @@ export const todo = table("todo")
 		id: string(),
 		title: string(),
 		completed: boolean(),
+		foo: string().optional(),
 	})
 	.primaryKey("id");

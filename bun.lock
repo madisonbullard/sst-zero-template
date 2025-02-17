@@ -62,6 +62,9 @@
     "@rocicorp/zero-sqlite3",
     "protobufjs",
   ],
+  "patchedDependencies": {
+    "@rocicorp/zero@0.15.2025021402": "patches/@rocicorp%2Fzero@0.15.2025021402.patch",
+  },
   "overrides": {
     "@rocicorp/zero": "0.15.2025021402",
   },

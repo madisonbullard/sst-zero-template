@@ -37,5 +37,8 @@
     "@sst-zero-template/webapp",
     "esbuild",
     "protobufjs"
-  ]
+  ],
+  "patchedDependencies": {
+    "@rocicorp/zero@0.15.2025021402": "patches/@rocicorp%2Fzero@0.15.2025021402.patch"
+  }
 }
