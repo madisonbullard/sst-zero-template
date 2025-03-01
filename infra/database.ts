@@ -1,6 +1,6 @@
 import { vpc } from "./network";
 
-export const zeroDb = new sst.aws.Postgres("ZeroDatabase", {
+export const postgres = new sst.aws.Postgres("Postgres", {
 	vpc,
 	transform: {
 		parameterGroup: {
@@ -25,12 +25,12 @@ export const zeroDb = new sst.aws.Postgres("ZeroDatabase", {
 	},
 });
 
-const connection = $interpolate`postgres://${zeroDb.username}:${zeroDb.password}@${zeroDb.host}:${zeroDb.port}`;
+const connection = $interpolate`postgres://${postgres.username}:${postgres.password}@${postgres.host}:${postgres.port}`;
 
 export const dbProperties = new sst.Linkable("DbProperties", {
 	properties: {
 		connectionString: connection,
-		ZERO_UPSTREAM_DB_NAME: zeroDb.database,
+		ZERO_UPSTREAM_DB_NAME: postgres.database,
 	},
 });
 

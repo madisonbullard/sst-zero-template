@@ -5,40 +5,6 @@
 
 declare module "sst" {
   export interface Resource {
-    "DbProperties": {
-      "ZERO_UPSTREAM_DB_NAME": string
-      "connectionString": string
-      "type": "sst.sst.Linkable"
-    }
-    "Storage": {
-      "name": string
-      "type": "sst.aws.Bucket"
-    }
-    "Vpc": {
-      "bastion": string
-      "type": "sst.aws.Vpc"
-    }
-    "Webapp": {
-      "type": "sst.aws.SvelteKit"
-      "url": string
-    }
-    "Zero": {
-      "service": string
-      "type": "sst.aws.Service"
-      "url": string
-    }
-    "ZeroAuthSecret": {
-      "type": "sst.sst.Secret"
-      "value": string
-    }
-    "ZeroDatabase": {
-      "database": string
-      "host": string
-      "password": string
-      "port": number
-      "type": "sst.aws.Postgres"
-      "username": string
-    }
   }
 }
 /// <reference path="sst-env.d.ts" />

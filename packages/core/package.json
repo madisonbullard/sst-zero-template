@@ -14,16 +14,16 @@
 		"migrate": "bun db migrate",
 		"db:studio": "bun sst shell drizzle-kit studio",
 		"typecheck": "tsc --noEmit",
-		"zero:dev": "bun zero-cache-dev -p src/zero/schema.ts --log-level=debug"
+		"zero:dev": "zero-deploy-permissions && zero-cache -p src/zero/schema.ts"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
 		"@rocicorp/zero": "*",
-		"drizzle-orm": "^0.39.3"
+		"drizzle-orm": "^0.40.0"
 	},
 	"devDependencies": {
-		"drizzle-kit": "^0.30.4"
+		"drizzle-kit": "^0.30.5"
 	}
 }
