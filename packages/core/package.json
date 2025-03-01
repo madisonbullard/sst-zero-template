@@ -1,29 +1,29 @@
 {
-  "name": "@sst-zero-template/core",
-  "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "exports": {
-    "./*.sql": "./src/*.sql.ts",
-    "./*.ts": "./src/*.ts",
-    "./*": "./src/*.ts"
-  },
-  "scripts": {
-    "db": "bun sst shell drizzle-kit",
-    "generate": "bun db generate",
-    "migrate": "bun db migrate",
-    "db:studio": "bun sst shell drizzle-kit studio",
+	"name": "@sst-zero-template/core",
+	"version": "1.0.0",
+	"description": "",
+	"type": "module",
+	"exports": {
+		"./*.sql": "./src/*.sql.ts",
+		"./*.ts": "./src/*.ts",
+		"./*": "./src/*.ts"
+	},
+	"scripts": {
+		"db": "bun sst shell drizzle-kit",
+		"generate": "bun db generate",
+		"migrate": "bun db migrate",
+		"db:studio": "bun sst shell drizzle-kit studio",
 		"typecheck": "tsc --noEmit",
-		"zero:dev": "bun zero-cache --log-level=debug"
+		"zero:dev": "bun zero-cache-dev -p src/zero/schema.ts --log-level=debug"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
-  "dependencies": {
-    "@rocicorp/zero": "*",
-    "drizzle-orm": "^0.39.3"
-  },
-  "devDependencies": {
-    "drizzle-kit": "^0.30.4"
-  }
+	"dependencies": {
+		"@rocicorp/zero": "*",
+		"drizzle-orm": "^0.39.3"
+	},
+	"devDependencies": {
+		"drizzle-kit": "^0.30.4"
+	}
 }

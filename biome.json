@@ -10,7 +10,7 @@
 		}
 	},
 	"files": {
-		"include": ["**/*.ts"],
+		"include": ["**/*.ts", "**/*.json"],
 		"ignore": ["node_modules", ".sst", "sst-env.d.ts", ".svelte-kit"]
 	},
 	"overrides": [
