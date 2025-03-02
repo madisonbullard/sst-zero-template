@@ -13,8 +13,7 @@
 		"generate": "bun db generate",
 		"migrate": "bun db migrate",
 		"db:studio": "bun sst shell drizzle-kit studio",
-		"typecheck": "tsc --noEmit",
-		"zero:dev": "zero-deploy-permissions && zero-cache -p src/zero/schema.ts"
+		"typecheck": "tsc --noEmit"
 	},
 	"keywords": [],
 	"author": "",

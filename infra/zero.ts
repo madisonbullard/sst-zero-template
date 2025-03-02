@@ -141,8 +141,8 @@ export const zero = new sst.aws.Service("Zero", {
 		},
 	},
 	dev: {
-		command: "bun zero:dev",
-		directory: "packages/core",
+		command: "bun dev",
+		directory: "packages/zero",
 		url: "http://localhost:4848",
 	},
 });
@@ -150,8 +150,8 @@ export const zero = new sst.aws.Service("Zero", {
 // new command.local.Command(
 // 	"zero-deploy-permissions",
 // 	{
-// 		dir: join(process.cwd(), "packages/core"),
-// 		create: "npx zero-deploy-permissions -p src/zero/schema.ts",
+// 		dir: join(process.cwd(), "packages/zero"),
+// 		create: "npx zero-deploy-permissions",
 // 		environment: {
 // 			ZERO_UPSTREAM_DB: $interpolate`${conn}/${dbProperties.properties.ZERO_UPSTREAM_DB_NAME}`,
 // 		},

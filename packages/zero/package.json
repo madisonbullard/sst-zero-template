@@ -1,0 +1,12 @@
+{
+	"name": "@sst-zero-template/zero",
+	"version": "0.0.0",
+	"type": "module",
+	"dependencies": {
+		"@rocicorp/zero": "*",
+		"@sst-zero-template/core": "workspace:*"
+	},
+	"scripts": {
+		"dev": "zero-deploy-permissions && zero-cache"
+	}
+}

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Query } from "zero-svelte";
   import { Z } from "$lib/zero/Z.svelte";
-  import { schema, type Schema } from "@sst-zero-template/core/zero/schema";
+  import { schema, type Schema } from "@sst-zero-template/zero/schema";
 
   const z = new Z<Schema>({
     server: import.meta.env.VITE_ZERO_SERVER_URL,

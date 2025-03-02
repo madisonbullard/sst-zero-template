@@ -5,7 +5,7 @@ import {
 	definePermissions,
 } from "@rocicorp/zero";
 
-import { todo } from "../todo/todo.zero";
+import { todo } from "@sst-zero-template/core/todo/todo.zero";
 
 export const schema = createSchema(1, {
 	tables: [todo],
