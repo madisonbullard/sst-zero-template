@@ -11,7 +11,13 @@
 	},
 	"files": {
 		"include": ["**/*.ts", "**/*.json"],
-		"ignore": ["node_modules", ".sst", "sst-env.d.ts", ".svelte-kit"]
+		"ignore": [
+			"node_modules",
+			".sst",
+			"sst-env.d.ts",
+			".svelte-kit",
+			"core/migrations"
+		]
 	},
 	"overrides": [
 		{
