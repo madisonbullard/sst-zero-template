@@ -1,5 +1,4 @@
 import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import { cluster } from "./cluster";
 import { dbProperties, postgres } from "./database";
 import { secret } from "./secret";
