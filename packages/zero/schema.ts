@@ -4,16 +4,15 @@ import {
 	createSchema,
 	definePermissions,
 } from "@rocicorp/zero";
-
-import { todo } from "@sst-zero-template/core/todo/todo.zero";
+import { foo } from "@sst-zero-template/core/foo/foo.zero";
 
 export const schema = createSchema(1, {
-	tables: [todo],
+	tables: [foo],
 });
 
 export type Schema = typeof schema;
 
-export type Todo = Row<typeof schema.tables.todo>;
+export type Foo = Row<typeof schema.tables.foo>;
 
 // This should match whatever data is on the JWT token used to authenticate the user
 export type AuthData = {
@@ -23,7 +22,7 @@ export type AuthData = {
 
 export const permissions = definePermissions<AuthData, Schema>(schema, () => {
 	return {
-		todo: {
+		foo: {
 			row: {
 				delete: ANYONE_CAN,
 				insert: ANYONE_CAN,

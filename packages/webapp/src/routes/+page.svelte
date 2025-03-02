@@ -9,7 +9,7 @@
     userID: "anon",
   });
 
-  const todos_query = z.current.query.todo;
+  const todos_query = z.current.query.foo;
   const todos = new Query(todos_query);
 
   const randID = () => Math.random().toString(36).slice(2);
@@ -20,7 +20,7 @@
     const newTodo = formData.get("newTodo") as string;
     const id = randID();
     if (newTodo) {
-      z.current.mutate.todo.insert({
+      z.current.mutate.foo.insert({
         id,
         title: newTodo,
         completed: false,
@@ -33,7 +33,7 @@
     const checkbox = event.target as HTMLInputElement;
     const id = checkbox.value;
     const completed = checkbox.checked;
-    z.current.mutate.todo.update({ id, completed });
+    z.current.mutate.foo.update({ id, completed });
   }
 </script>
 

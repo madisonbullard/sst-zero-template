@@ -1,12 +1,9 @@
-if ($app.stage === "production") {
-	throw new Error(
-		"VITE_ZERO_SERVER_URL must be configured for use in production in infra/webapp.ts",
-	);
-}
+import { zero } from "./zero";
+
 export const webapp = new sst.aws.SvelteKit("Webapp", {
 	path: "packages/webapp",
 	environment: {
-		VITE_ZERO_SERVER_URL: "http://localhost:4848",
+		VITE_ZERO_SERVER_URL: zero.url,
 	},
 });
 
